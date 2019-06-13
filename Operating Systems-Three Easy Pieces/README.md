@@ -1,17 +1,70 @@
 # [Operating Systems: Three Easy Pieces](http://pages.cs.wisc.edu/~remzi/OSTEP/#book-chapters)
 
+### To Students
+
+> Ideas are not pulled out of the air.
+
+《Intel 64 and IA-32 Architectures Software Developers Manual》 以下简称 *IA32*
+
+> 这本书每章的 summary 的 `ASIDE` 基本就是这一章的内容了
+
+- [I. Virtualization](#i)
+  - [4. The Abstraction: The Process](#4)
+  - [7-10. Scheduling](#7-10)
+  - []()
+  - []()
+- [II. Concurrency](#ii)
+  - [30. Condition Variables](#30)
+- [III. Persistence](#iii)
+
+
 &nbsp;   
+<a id="i"></a>
 ## I. Virtualization
 
+<a id="4"></a>
+### 4. The Abstraction: The Process
+
+- Virtualize CPU
+  - low-level mechanisms to implement proecss
+  - high-level policies to schedule
+
+<img src="assets/6_2_limited_direct_execution.png" width="500"/>
+
+&nbsp;   
+<img src="assets/6_3_timer_interrupt.png" width="500"/>
+
+#### 关于 contect swtich
+
+参考 *IA32 §6.4.1*
+
+<img src="assets/context_switch_1.png" width="500"/>
+
+<img src="assets/context_switch_3.png" width="500"/>
+
+<img src="assets/context_switch_2.png" width="500"/>
+
+<img src="assets/context_switch_4.png" width="500"/>
+
+<img src="assets/context_switch_5.png" width="500"/>
+
+<img src="assets/context_switch_6.png" width="500"/>
+
+<a id="7-10"></a>
+### 7-10. Scheduling
+
+
 
 
 &nbsp;   
+<a id="ii"></a>
 ## II. Concurrency
 
 
+<a id="30"></a>
 ### 30. Condition Variables
 
-![](assets/30_1_signal_before_unlock.png)
+<img src="assets/30_1_signal_before_unlock.png" width="500"/>
 
 这个其实很奇怪，我研究了一下，博客写在这里：[探究 “条件变量signal时是否需要持有mutex”](https://blog.csdn.net/rsy56640/article/details/84953204)
 
@@ -36,5 +89,6 @@ signal 通常表示**资源可用**；而 broadcast 通常表示**状态改变**
 
 
 &nbsp;   
+<a id="iii"></a>
 ## III. Persistence
 
