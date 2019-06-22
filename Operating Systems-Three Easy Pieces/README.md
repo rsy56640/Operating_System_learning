@@ -53,7 +53,25 @@
 <a id="7-10"></a>
 ### 7-10. Scheduling
 
+trade-off：**turnaround time** 和 **response time**
 
+- FIFO
+- Shortest Job First (turnaround time)
+- Preemptive Shortest Job First （有新来的可以换）
+- Round Robin（都可以响应）
+- Multi-level Feedback Queue
+  - 混合方法
+  - 进程被分配到队列（可能会被移动），队列内部使用某种调度算法
+  - 对所有队列使用调度（可以按优先级分配时间），被选中的队列在内部执行调度
+  - 需要比较合适的优先级改变算法，否则所有进程的对待方式都差不多
+- Lottery Scheduling (Tickets)
+- Completely Fair Scheduling（公平的虚拟运行时间）
+- O(1) Scheduling
+- BFS Scheduling
+
+#### Multi-Core Scheduling
+
+cache coherence, cache affinity
 
 
 &nbsp;   
