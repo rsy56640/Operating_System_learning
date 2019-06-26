@@ -6,16 +6,20 @@
 
 《Intel 64 and IA-32 Architectures Software Developers Manual》 以下简称 *IA32*
 
-> 这本书每章的 summary 的 `ASIDE` 基本就是这一章的内容了
+> 这本书每章的 summary 的 `ASIDE` 基本就是这一章的内容了   
+> 感觉这本有点简单了，之前听别人说挺不错的。
 
 - [I. Virtualization](#i)
   - [4. The Abstraction: The Process](#4)
   - [7-10. Scheduling](#7-10)
-  - []()
+  - [13. The Abstraction: Address Spaces](#13)
+  - [15. Mechanism: Address Translation](#15)
+  - [16. Segmentation](#16)
   - []()
 - [II. Concurrency](#ii)
   - [30. Condition Variables](#30)
 - [III. Persistence](#iii)
+  - []()
 
 
 &nbsp;   
@@ -72,6 +76,36 @@ trade-off：**turnaround time** 和 **response time**
 #### Multi-Core Scheduling
 
 cache coherence, cache affinity
+
+<a id="13"></a>
+### 13. The Abstraction: Address Spaces
+
+早期 OS 为了实现 time-sharing，给一个 process 整个地址空间，切换时将所有状态和数据保存到 disk。这样太慢，因此在切换时将 process 留在 memory，这样多个 proces 同时驻留在内存，于是面临一个问题：isolation 和 protection
+
+OS 为每个 process 提供一段连续内存，仿佛 process 占有整个内存，把这种 abstraction 称作 address space
+
+<a id="15"></a>
+### 15. Mechanism: Address Translation
+
+> In virtualizing memory, the hardware will interpose on each memory access, and translate each virtual address issued by the process to a physical address where the desired information is actually stored.
+
+hardware 在每个 memory access 时做如下 address translation   
+检查 virtual addr < limit register，然后计算 physical addr = base register + virtual addr   
+OS 负责为每个 process 设置正确的 base register 和 limit register
+
+<a id="16"></a>
+### 16. Segmentation
+
+分段为了解决内部碎片，因为分配固定大小的 limit register 导致浪费。
+
+把 code, stack, heap 分开，每个作为单独的一段，有自己的 base register 和 limit register
+
+<a id=""></a>
+### 
+
+
+<a id=""></a>
+### 
 
 
 &nbsp;   
