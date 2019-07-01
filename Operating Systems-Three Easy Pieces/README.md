@@ -7,7 +7,8 @@
 《Intel 64 and IA-32 Architectures Software Developers Manual》 以下简称 *IA32*
 
 > 这本书每章的 summary 的 `ASIDE` 基本就是这一章的内容了   
-> 感觉这本有点简单了，之前听别人说挺不错的。
+> 感觉这本有点简单了，之前听别人说挺不错的。   
+> 就当是查漏补缺了。
 
 - [I. Virtualization](#i)
   - [4. The Abstraction: The Process](#4)
@@ -15,7 +16,8 @@
   - [13. The Abstraction: Address Spaces](#13)
   - [15. Mechanism: Address Translation](#15)
   - [16. Segmentation](#16)
-  - []()
+  - [18-20. Paging](#18-20)
+  - [21-23. Virtual Memory System](#21-23)
 - [II. Concurrency](#ii)
   - [30. Condition Variables](#30)
 - [III. Persistence](#iii)
@@ -100,12 +102,50 @@ OS 负责为每个 process 设置正确的 base register 和 limit register
 
 把 code, stack, heap 分开，每个作为单独的一段，有自己的 base register 和 limit register
 
-<a id=""></a>
-### 
+<a id="18-20"></a>
+### 18-20. Paging
+
+将 memory 看作连续的 fixed-size slot，叫做 page frame
+
+address translation：OS 把每个地址看成 （virtual page no + page offset），将 virtual page no 映射为 phsical page no
+
+hardware 从 TLB 映射到 physical address，如果 TLB miss，交给 OS，OS 维护某种 page table 结构，利用特权指令修改 TLB，然后恢复到 TLB miss 之前，hardware 从 TLB 得到 physical address
+
+- TLB O(1) 并行查找
+- TLB 缓存的是一个 process 的映射，context switch 时，清空 TLB（或者提供区分进程的标记）
+
+#### Page Table
+
+OS 维护 TLB miss 的原因是 OS 可以设计高效的数据结构来维护 page table 映射。
+
+多级页表（multi-level page table）：因为很多页表项是空的，所以做 indirect layer，指向存在的部分页表，省内存。
 
 
-<a id=""></a>
-### 
+- [How The Kernel Manages Your Memory](https://manybutfinite.com/post/how-the-kernel-manages-your-memory/)
+- [Anatomy of a Program in Memory](https://manybutfinite.com/post/anatomy-of-a-program-in-memory/)
+- [Page table in Linux kernel space during boot](https://stackoverflow.com/questions/16688540/page-table-in-linux-kernel-space-during-boot)
+- [Understanding the Linux Virtual Memory Manager](https://www.kernel.org/doc/gorman/html/understand/index.html)
+
+
+<a id="21-23"></a>
+### 21-23. Virtual Memory System
+
+为了扩大地址空间，允许将内存 swap 到 disk，所以 page 增加一个属性 *present*，当发生 page fault 时，OS 负责维护：
+
+- TLB 和 page table 同步
+  - 即如果 TLB hit，那么 page 一定还在 memory
+- page replacement policy
+  - LRU
+  - Clock
+  - Victim
+
+一个 page table entry 有3个属性：
+
+- valid (segmentation fault)
+- protect (protection fault)
+- present (page fault)
+
+<img src="./assets/ia32_4_level_paging.png" width="360"/>
 
 
 &nbsp;   
