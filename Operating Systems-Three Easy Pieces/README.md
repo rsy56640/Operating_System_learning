@@ -21,7 +21,8 @@
 - [II. Concurrency](#ii)
   - [30. Condition Variables](#30)
 - [III. Persistence](#iii)
-  - []()
+  - [36-38 I/O, HDD, RAIDs](#36-38)
+  - [40-41 File System](#40-41)
 
 
 &nbsp;   
@@ -184,3 +185,37 @@ signal 通常表示**资源可用**；而 broadcast 通常表示**状态改变**
 <a id="iii"></a>
 ## III. Persistence
 
+
+<a id="36-38"></a>
+### 36-38 I/O, HDD, RAIDs
+
+- OS interact with device
+  - interrupt
+  - DMA
+- access device register
+  - explicit I/O instructions
+  - memory-mapped I/O
+
+<img src="./assets/37_3_disk_track_and_head.png" width="400">
+
+#### RAID
+
+- capacity
+- reliability
+- performance
+
+<a id="40-41"></a>
+### 40-41 File System
+
+
+
+
+
+
+<img src="./assets/.png" width="400">
+
+<img src="./assets/.png" width="400">
+
+
+<a id=""></a>
+### 
