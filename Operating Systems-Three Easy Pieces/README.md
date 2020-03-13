@@ -23,6 +23,8 @@
 - [III. Persistence](#iii)
   - [36-38 I/O, HDD, RAIDs](#36-38)
   - [40-41 File System](#40-41)
+  - [42-43 Log & Recovery](#42-43)
+  - [44 Flash-based SSDs](#44)
 
 
 &nbsp;   
@@ -208,14 +210,15 @@ signal 通常表示**资源可用**；而 broadcast 通常表示**状态改变**
 ### 40-41 File System
 
 
+<a id="42-43"></a>
+### 42-43 Log & Recovery
 
 
-
-
-<img src="./assets/.png" width="400">
-
-<img src="./assets/.png" width="400">
+<a id="44"></a>
+### 44 Flash-based SSDs
 
 
 <a id=""></a>
 ### 
+
+<img src="./assets/.png" width="400">
